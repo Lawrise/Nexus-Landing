@@ -1,16 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
+import HoverPopover from "./HoverPopover";
+import { ProductSubmenu } from "@/app/data";
 
 const navItems = [
   {
@@ -45,22 +36,7 @@ const Header: React.FC = () => {
           })}
         </div>
       </div>
-      <NavigationMenu>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-            <NavigationMenuContent className="bg-white border-0">
-              <NavigationMenuLink>Link</NavigationMenuLink>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-		  <NavigationMenuItem>
-            <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <NavigationMenuLink className="bg-white">Link</NavigationMenuLink>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+      <HoverPopover title="Product" submenu={ProductSubmenu}/>
 
       <div className="flex gap-4">
         <Link

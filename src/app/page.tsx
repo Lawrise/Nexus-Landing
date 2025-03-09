@@ -1,5 +1,5 @@
 import React from "react";
-import Demonstration from "@/app/component/Demonstration";
+import Demonstration from "@/components/Demonstration";
 
 export default function Home() {
   return (
