@@ -1,11 +1,11 @@
 import { ProductSubmenu } from "./menu";
-import { Submenu } from "./menu";
+import { SubmenuItem } from "./menu";
 
 export {
 	ProductSubmenu,
 }
 
 export type {
-	Submenu,
+	SubmenuItem,
 }
 

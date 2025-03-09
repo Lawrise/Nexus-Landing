@@ -1,12 +1,12 @@
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import HoverPopover from "./HoverPopover";
-import { ProductSubmenu } from "@/app/data";
+import { ProductSubmenu } from "@/data";
 
 const navItems = [
   {
     label: "Product",
-    link: "/",
+    submenu: ProductSubmenu,
   },
   {
     label: "Pricing",
@@ -26,17 +26,15 @@ const Header: React.FC = () => {
           <div className="w-4 h-4 bg-orange-300"></div>
           <p className="text-2xl font-bold">Nexus</p>
         </div>
-        <div className="flex gap-4 ml-auto">
+        <div className="flex gap-2">
           {navItems.map((item) => {
             return (
-              <a key={item.label} href={item.link} className="text-md">
-                {item.label}
-              </a>
+              <HoverPopover key={item.label} title={item.label} submenu={item.submenu} />
+            
             );
           })}
         </div>
       </div>
-      <HoverPopover title="Product" submenu={ProductSubmenu}/>
 
       <div className="flex gap-4">
         <Link

@@ -1,25 +1,42 @@
-'use client';
-import React, { useRef, useState } from 'react';
-import { 
-  Popover, 
-  PopoverContent, 
-  PopoverTrigger 
-} from '@/components/ui/popover';
-import { ChevronUp, ChevronDown } from 'lucide-react';
-import { Button } from "@/components/ui/button"
-import { Submenu } from '@/app/data';
-import Link from 'next/link';
+"use client";
+import React, { useRef, useState } from "react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { ChevronUp, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { SubmenuItem } from "@/data";
 
-interface HoverPopoverProps {
+interface NotionMenuProps {
   title: string;
-  submenu?: Submenu[];
+  link?: string;
+  submenu?: SubmenuItem[];
 }
 
-const HoverPopover: React.FC<HoverPopoverProps> = ({title, submenu}) => {
+const NotionStyleMenu: React.FC<NotionMenuProps> = ({
+  title,
+  link,
+  submenu,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  // Si le timer de femeture est lance on l'arrete donc ne trigger pas la fermeture
+  if (!submenu || submenu.length === 0) {
+    return (
+      <Link href={link || "#"}>
+        <Button
+          variant="ghost"
+          className="h-8 px-3 py-2 text-sm font-normal hover:bg-gray-100 rounded-md"
+        >
+          <span className="text-gray-800">{title}</span>
+        </Button>
+      </Link>
+    );
+  }
+
   const handleMouseEnter = () => {
     if (closeTimeout.current) {
       clearTimeout(closeTimeout.current);
@@ -28,47 +45,62 @@ const HoverPopover: React.FC<HoverPopoverProps> = ({title, submenu}) => {
     setIsOpen(true);
   };
 
-  // Lance le timer de fermeture pour eviter de fermer le popover trop rapidement
   const handleMouseLeave = () => {
     closeTimeout.current = setTimeout(() => {
       setIsOpen(false);
     }, 150);
   };
-  
+
   return (
-    <div className="flex items-center justify-center p-8">
-      <Popover open={isOpen} onOpenChange={setIsOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="ghost"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <span>{title}</span>
-            {isOpen ? (
-              <ChevronUp className="h-4 w-4 text-slate-600" />
-            ) : (
-              <ChevronDown className="h-4 w-4 text-slate-600" />
-            )}
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent 
-          className="w-64 p-4 bg-white mt-0"
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="ghost"
+          className="h-8 px-3 py-2 text-sm font-normal hover:bg-gray-100 rounded-md"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
+          <span className="text-gray-800">{title}</span>
+          {isOpen ? (
+            <ChevronUp className="h-4 w-4 ml-1 text-gray-500" />
+          ) : (
+            <ChevronDown className="h-4 w-4 ml-1 text-gray-500" />
+          )}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent
+        className="w-64 p-1 bg-white shadow-lg border border-gray-200 rounded-md mt-1"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="py-1">
           {submenu?.map((item) => (
-            <Link key={item.title}
+            <Link
+              key={item.title}
               href={item.link}
-              className="flex py-2 text-sm text-slate-600"
+              className="flex items-center px-3 py-2 hover:bg-gray-100 rounded-md group"
             >
-              {item.title}
+              {item.icon && (
+                <div className="flex justify-center items-center mr-3 text-gray-500 border border-neutral-200 p-2 rounded-md bg-white">
+                  {item.icon}
+                </div>
+              )}
+              <div className="flex flex-col">
+                <span className="text-sm font-medium text-gray-800">
+                  {item.title}
+                </span>
+                {item.description && (
+                  <span className="text-xs text-gray-500 mt-0.5">
+                    {item.description}
+                  </span>
+                )}
+              </div>
             </Link>
           ))}
-        </PopoverContent>
-      </Popover>
-    </div>
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 };
 
-export default HoverPopover;
+export default NotionStyleMenu;
