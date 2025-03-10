@@ -21,6 +21,9 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <footer className="flex justify-center items-center h-12 bg-gray-200">
+          <p>Footer</p>
+        </footer>
       </body>
     </html>
   );
