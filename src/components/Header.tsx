@@ -23,7 +23,7 @@ const Header: React.FC = () => {
     <div className="flex border-b border-gray-200 h-12 items-center justify-between px-4 text-md">
       <div className="flex gap-4 items-center">
         <div className="flex gap-2 items-center">
-          <div className="w-4 h-4 bg-orange-300"></div>
+          <div className="w-4 h-4 bg-primary"></div>
           <p className="text-2xl font-bold">Nexus</p>
         </div>
         <div className="flex gap-2">

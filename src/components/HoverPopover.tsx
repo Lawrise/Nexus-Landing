@@ -10,13 +10,13 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SubmenuItem } from "@/data";
 
-interface NotionMenuProps {
+interface MenuItemProps {
   title: string;
   link?: string;
   submenu?: SubmenuItem[];
 }
 
-const NotionStyleMenu: React.FC<NotionMenuProps> = ({
+const MenuItem: React.FC<MenuItemProps> = ({
   title,
   link,
   submenu,
@@ -103,4 +103,4 @@ const NotionStyleMenu: React.FC<NotionMenuProps> = ({
   );
 };
 
-export default NotionStyleMenu;
+export default MenuItem;
