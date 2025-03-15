@@ -49,7 +49,7 @@ const Demonstration = () => {
     DemoTab.find((tab) => tab.id === activeTab) || DemoTab[0];
 
   return (
-    <section className="w-full py-8 md:py-16 flex flex-col">
+    <section className="w-full flex flex-col">
       {/* Image/Content Section */}
       <div className="flex gap-8 mb-8 justify-center">
         <div

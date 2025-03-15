@@ -6,7 +6,7 @@ import Lotie from "./ui/Lottie";
 
 const Hero: React.FC = () => {
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full py-8 md:pt-24">
+    <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full md:pt-24">
       <div className="flex flex-col gap-8 w-full mx-auto justify-start py-12">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold">
           Unlock your true
