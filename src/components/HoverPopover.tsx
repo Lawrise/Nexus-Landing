@@ -77,6 +77,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
           {submenu?.map((item) => (
             <Link
               key={item.title}
+              target="_blank"
               href={item.link}
               className="flex items-center px-3 py-2 hover:bg-gray-100 rounded-md group"
             >
