@@ -1,4 +1,7 @@
+import Link from "next/link";
 import React from "react";
+import { Button } from "../ui/button";
+import { LuArrowRight } from "react-icons/lu";
 
 interface FeatureIconProps {
   icon: React.ReactNode;
@@ -21,6 +24,10 @@ const FeatureIcon: React.FC<FeatureIconProps> = ({
 interface FeatureHeaderProps {
   title: string;
   description: string;
+  link?: {
+    title: string;
+    href: string;
+  };
   items: {
     title: string;
     description: string;
@@ -31,6 +38,7 @@ interface FeatureHeaderProps {
 const FeatureHeader: React.FC<FeatureHeaderProps> = ({
   title,
   description,
+  link,
   items,
 }) => (
   <header className="flex w-full mx-auto mb-8 md:mb-16 justify-between gap-x-8">
@@ -43,6 +51,20 @@ const FeatureHeader: React.FC<FeatureHeaderProps> = ({
         {description}
         <br className="hidden md:block" />
       </p>
+      {link && (
+        <Link
+          href={link.href}
+          className="flex items-center justify-start group p-0"
+        >
+          <Button
+            variant="link"
+            className="text-primary px-0 mx-0 text-lg justify-start"
+          >
+            {link.title}
+            <LuArrowRight className=" group-hover:translate-x-1 transform transition-all duration-300" />
+          </Button>
+        </Link>
+      )}
     </div>
     <div className="grid grid-cols-3 gap-4 w-10/20">
       {items.map((item, index) => (

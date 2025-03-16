@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ProductSubmenu, CommunitySubmenu } from "@/data";
 import dynamic from "next/dynamic";
 
-const HoverPopover = dynamic(() => import("./HoverPopover"), { ssr: false });
+const HoverPopover = dynamic(() => import("./ui/HoverPopover"), { ssr: false });
 
 const navItems = [
   {

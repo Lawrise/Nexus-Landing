@@ -1,8 +1,7 @@
 // Master Any Subject with AI-Powered Learning
 "use client";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { LuArrowRight } from "react-icons/lu";
-import Lotie from "./ui/Lottie";
 
 const Hero: React.FC = () => {
   return (
@@ -22,7 +21,7 @@ const Hero: React.FC = () => {
           className="group hover:-translate-y-1 transform transition-all w-42 duration-300 font-bold text-lg py-1"
         >
           Try it now
-          <LuArrowRight className="ml-2 group-hover:translate-x-0.5 transform transition-all duration-300" />
+          <LuArrowRight className="ml-1 group-hover:translate-x-1 transform transition-all duration-300" />
         </Button>
       </div>
       <div className="flex w-full justify-center rounded-md">
