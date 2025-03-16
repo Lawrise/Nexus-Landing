@@ -11,7 +11,10 @@ export const HoverEffect = ({
     title: string;
     description: string;
     link: string;
-	icon: React.ReactNode;
+    icon: React.ReactNode;
+    replace?: string[];
+    blend?: string[];
+    withIcon?: React.ReactNode[];
   }[];
   className?: string;
 }) => {
@@ -28,7 +31,7 @@ export const HoverEffect = ({
         <Link
           href={item?.link}
           key={item?.link}
-          className="relative group  flex h-full w-full p-4"
+          className="relative group  flex flex-col h-full w-full p-4"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -38,15 +41,49 @@ export const HoverEffect = ({
                 className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 1 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.15 },
+                }}
+                exit={{
+                  opacity: 0,
+                  transition: { duration: 0.15, delay: 0.5 },
+                }}
               />
             )}
           </AnimatePresence>
           <Card>
-			<div className="w-full flex justify-center items-center text-4xl"> 
-				{item.icon}
-			</div>
+            <div className="w-full flex justify-center items-center text-4xl">
+              {item.icon}
+            </div>
             <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
+            <CardDescription className="mb-8">
+              {item.description}
+            </CardDescription>
+            {item.replace && (
+              <div className="flex items-center justify-center space-x-2">
+                <p className="font-semibold">Alternative to</p>
+                {item.withIcon &&
+                  item.withIcon.map((icon, index) => (
+                    <span key={index} className="flex items-center space-x-1">
+                      {icon}
+                      <span>{item.replace ? item.replace[index] : ''}</span>
+                    </span>
+                  ))}
+              </div>
+            )}
+            {item.blend && (
+              <div className="flex items-center justify-center space-x-2">
+                <p className="font-semibold">Blend with</p>
+                {item.withIcon &&
+                  item.withIcon.map((icon, index) => (
+                    <span key={index} className="flex items-center space-x-1">
+                      {icon}
+                      <span>{item.blend ? item.blend[index] : ''}</span>
+                    </span>
+                  ))}
+              </div>
+            )}
           </Card>
         </Link>
       ))}
@@ -64,7 +101,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 flex justify-center items-center text-center bg-white overflow-hidden  border border-neutral-300 dark:border-white/[0.2]  relative z-20",
+        "rounded-2xl h-full w-full p-4 flex justify-center bg-neutral-100 items-center text-center overflow-hidden   dark:border-white/[0.2]  relative z-20",
         className
       )}
     >
@@ -97,12 +134,7 @@ export const CardDescription = ({
   children: React.ReactNode;
 }) => {
   return (
-    <p
-      className={cn(
-        "mt-8  tracking-wide leading-relaxed text-sm",
-        className
-      )}
-    >
+    <p className={cn("mt-8  tracking-wide leading-relaxed text-md", className)}>
       {children}
     </p>
   );

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { Inter } from 'next/font/google'
+import { Inter } from "next/font/google";
 
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-})
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Nexus",
@@ -23,11 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.className}>
-      <body
-        className=""
-      >
+      <body className="min-h-screen flex flex-col relative">
         <Header />
-        {children}
+        <main className="flex flex-col gap-y-8 md:gap-y-48 row-start-2 items-center py-8 px-8 sm:px-16 md:px-32 xl:px-64 relative">
+          {children}
+        </main>
         <footer className="flex justify-center items-center h-12 bg-gray-200">
           <p>Footer</p>
         </footer>
