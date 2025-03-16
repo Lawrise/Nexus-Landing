@@ -82,7 +82,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
               className="flex items-center px-3 py-2 hover:bg-gray-100 rounded-md group"
             >
               {item.icon && (
-                <div className="flex justify-center items-center mr-3 text-gray-500 border border-neutral-200 p-2 rounded-md bg-white">
+                <div className="flex justify-center items-center mr-3 text-neutral-500 border border-neutral-200 p-2 rounded-md bg-white">
                   {item.icon}
                 </div>
               )}
