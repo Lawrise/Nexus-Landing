@@ -27,9 +27,9 @@ const Hero: React.FC = () => {
           <LuArrowRight className="ml-1 group-hover:translate-x-1 transform transition-all duration-300" />
         </Button>
       </div>
-      <div className="flex w-full justify-center items-center rounded-md relative">
+      <div className="flex w-full justify-start items-end rounded-md relative">
         {/* <Lotie /> */}
-        <div className="w-full h-full absolute top-0 left-10 flex justify-start items-end bottom-0 z-10">
+        <div className="w-32 h-auto z-10">
           <Iphone15Pro height={200}/>
         </div>
           <div className="bg-neutral-50 z-0  border aspect-video h-[300px] absolute top-4 right-20 rounded-md"></div>
