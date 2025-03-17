@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { LuArrowRight } from "react-icons/lu";
 import { Iphone15Pro } from "./IphoneMoc";
-import FloatingIcons from "./FloatingIcons";
 
 const Hero: React.FC = () => {
   return (

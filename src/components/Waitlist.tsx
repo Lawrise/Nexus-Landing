@@ -1,36 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SectionHeader, { FeatureIcon } from "./Presentation/SectionsHeader";
-import { PiCalendar, PiHourglassHigh, PiTrophy } from "react-icons/pi";
-import Link from "next/link";
-import { Button } from "./ui/button";
-import { LuArrowRight } from "react-icons/lu";
+import { FeatureIcon } from "./Presentation/SectionsHeader";
+import { WAIT_LIST_ADVANTAGE, FormData } from "@/data/waitlist";
 
-// TypeScript interface for form data
-interface FormData {
-  email: string;
-  name: string;
-  reason: string;
-}
-
-// Waitlist advantage data
-export const WAIT_LIST_ADVANTAGE = [
-  {
-    icon: <PiCalendar className="text-6xl" />,
-    title: "Early Access",
-    description: "Get early access to our product before anyone else.",
-  },
-  {
-    icon: <PiHourglassHigh className="text-6xl" />,
-    title: "Updates",
-    description: "Get updates on our progress and new features.",
-  },
-  {
-    icon: <PiTrophy className="text-6xl" />,
-    title: "Help Shape the Product",
-    description: "Share your feedback and help us build a better product.",
-  },
-];
 
 const NotionLikeWaitlist: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -110,7 +82,7 @@ const NotionLikeWaitlist: React.FC = () => {
           Join the waitlist
         </h1>
         <p className="text-lg md:text-xl text-neutral-500">
-          Get notified when we're ready to launch.
+          Get notified when we&apos;re ready to launch.
           <br className="hidden md:block" />
         </p>
       </div>

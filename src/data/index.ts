@@ -4,6 +4,7 @@ import { ProcessSteps, ProcessStepInterface } from "./processSteps";
 import { FEATURES, FeatureInterface, TARGET_USERS } from "./allFeature";
 import { BENEFICES, BeneficesInterface } from "./habitFeature";
 import { FAQ_ICON, FAQ_QUESTIONS, FAQQuestionInterface } from "./Faq";
+import { WAIT_LIST_ADVANTAGE, FormData } from "./waitlist";
 
 export {
 	ProductSubmenu,
@@ -14,6 +15,7 @@ export {
 	BENEFICES,
 	FAQ_ICON,
 	FAQ_QUESTIONS,
+	WAIT_LIST_ADVANTAGE,
 }
 
 export type {
@@ -22,5 +24,6 @@ export type {
 	FeatureInterface,
 	BeneficesInterface,
 	FAQQuestionInterface,
+	FormData,
 }
 
