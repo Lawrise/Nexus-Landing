@@ -1,7 +1,7 @@
 import { PiTarget } from "react-icons/pi";
 import { LuChartNoAxesCombined } from "react-icons/lu";
 import { PiCompass } from "react-icons/pi";
-import FeatureHeader from "@/components/Presentation/SectionsHeader";
+import SectionHeader from "@/components/Presentation/SectionsHeader";
 
 const BENEFICES = [
   {
@@ -25,7 +25,7 @@ const BENEFICES = [
 const LearningPathFeature = () => {
   return (
     <section>
-      <FeatureHeader
+      <SectionHeader
         title="Your study path, personalized."
         description="Tired of jumping between random tutorials, forgetting key concepts, and feeling stuck? Nexus builds your learning path for you."
         link={{ title: "More about the learning path", href: "#" }}

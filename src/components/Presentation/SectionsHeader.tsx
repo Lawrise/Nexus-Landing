@@ -2,26 +2,29 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import { LuArrowRight } from "react-icons/lu";
+import { cn } from "@/lib/utils";
 
 interface FeatureIconProps {
   icon: React.ReactNode;
   title: string;
   description: string;
+  className?: string;
 }
 
-const FeatureIcon: React.FC<FeatureIconProps> = ({
+export const FeatureIcon: React.FC<FeatureIconProps> = ({
   icon,
   title,
   description,
+  className,
 }) => (
-  <div className="flex flex-col justify-center items-start gap-y-2 text-start px-4">
+  <div className={cn("flex flex-col justify-center items-start gap-y-2 text-start px-4", className)}>
     {icon}
     <h3 className="font-bold">{title}</h3>
     <p className="text-neutral-500">{description}</p>
   </div>
 );
 
-interface FeatureHeaderProps {
+interface SectionHeaderProps {
   title: string;
   description: string;
   link?: {
@@ -35,7 +38,7 @@ interface FeatureHeaderProps {
   }[];
 }
 
-const FeatureHeader: React.FC<FeatureHeaderProps> = ({
+const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   description,
   link,
@@ -79,4 +82,4 @@ const FeatureHeader: React.FC<FeatureHeaderProps> = ({
   </header>
 );
 
-export default FeatureHeader;
+export default SectionHeader;

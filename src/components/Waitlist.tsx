@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import FeatureHeader from './Presentation/SectionsHeader';
-import { PiCalendar, PiHourglassHigh, PiTrophy } from 'react-icons/pi';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import SectionHeader, { FeatureIcon } from "./Presentation/SectionsHeader";
+import { PiCalendar, PiHourglassHigh, PiTrophy } from "react-icons/pi";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { LuArrowRight } from "react-icons/lu";
 
 // TypeScript interface for form data
 interface FormData {
@@ -31,52 +34,54 @@ export const WAIT_LIST_ADVANTAGE = [
 
 const NotionLikeWaitlist: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    email: '',
-    name: '',
-    reason: ''
+    email: "",
+    name: "",
+    reason: "",
   });
   const [showSuccess, setShowSuccess] = useState(false);
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
     // Clear error for this field if it exists
     if (errors[name as keyof FormData]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }));
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
-    
+
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
+      newErrors.email = "Email is invalid";
     }
-    
+
     if (step === 2) {
       if (!formData.name) {
-        newErrors.name = 'Name is required';
+        newErrors.name = "Name is required";
       }
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       if (step === 1) {
         setStep(2);
       } else {
         // Here you would typically send the data to your backend
-        console.log('Submitting waitlist request:', formData);
+        console.log("Submitting waitlist request:", formData);
         setShowSuccess(true);
       }
     }
@@ -87,12 +92,29 @@ const NotionLikeWaitlist: React.FC = () => {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-white rounded-lg">
-      <FeatureHeader
-        title="Join the waitlist"
-        description="Get notified when we're ready to launch."
-        items={WAIT_LIST_ADVANTAGE} />
+    <div className="w-full flex flex-col items-center justify-center p-6 space-y-8 py-16 shadow-md bg-neutral-100 rounded-lg">
       
+	  <div className="grid grid-cols-3 gap-4 w-10/20 mb-16">
+        {WAIT_LIST_ADVANTAGE.map((advantage, index) => (
+          <FeatureIcon
+            key={index}
+            icon={advantage.icon}
+            title={advantage.title}
+            description={advantage.description}
+            className="flex flex-col justify-center items-center text-center"
+          />
+        ))}
+      </div>
+	  <div className="text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold">
+          Join the waitlist
+        </h1>
+        <p className="text-lg md:text-xl text-neutral-500">
+          Get notified when we're ready to launch.
+          <br className="hidden md:block" />
+        </p>
+      </div>
+
       <AnimatePresence mode="wait">
         {showSuccess ? (
           <motion.div
@@ -101,13 +123,28 @@ const NotionLikeWaitlist: React.FC = () => {
             exit={{ opacity: 0, y: -10 }}
             className="text-center py-8"
           >
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            <div className=" h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg
+                className="w-8 h-8 text-green-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
               </svg>
             </div>
-            <h3 className="text-xl font-medium text-gray-900 mb-2">You&apos;re on the list!</h3>
-            <p className="text-gray-600">We&apos;ll notify you when we&apos;re ready to launch.</p>
+            <h3 className="text-xl font-medium text-gray-900 mb-2">
+              You&apos;re on the list!
+            </h3>
+            <p className="text-gray-600">
+              We&apos;ll notify you when we&apos;re ready to launch.
+            </p>
           </motion.div>
         ) : (
           <motion.form
@@ -117,12 +154,15 @@ const NotionLikeWaitlist: React.FC = () => {
             exit={{ opacity: 0, x: step === 1 ? 20 : -20 }}
             transition={{ duration: 0.3 }}
             onSubmit={handleSubmit}
-            className="space-y-6"
+            className="space-y-6 w-1/2"
           >
             {step === 1 && (
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Email
                   </label>
                   <input
@@ -135,9 +175,11 @@ const NotionLikeWaitlist: React.FC = () => {
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     autoFocus
                   />
-                  {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                  {errors.email && (
+                    <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                  )}
                 </div>
-                
+
                 <motion.button
                   type="submit"
                   whileHover={{ scale: 1.01 }}
@@ -148,11 +190,24 @@ const NotionLikeWaitlist: React.FC = () => {
                 </motion.button>
               </div>
             )}
-            
+
             {step === 2 && (
               <div className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+        <div className="grid grid-cols-3 gap-4 w-10/20">
+        {WAIT_LIST_ADVANTAGE.map((advantage, index) => (
+          <FeatureIcon
+            key={index}
+            icon={advantage.icon}
+            title={advantage.title}
+            description={advantage.description}
+            className="flex flex-col justify-center items-center text-center"
+          />
+        ))}
+      </div>        <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Name
                   </label>
                   <input
@@ -165,11 +220,16 @@ const NotionLikeWaitlist: React.FC = () => {
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     autoFocus
                   />
-                  {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+                  {errors.name && (
+                    <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                  )}
                 </div>
-                
+
                 <div>
-                  <label htmlFor="reason" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="reason"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Why are you interested? (optional)
                   </label>
                   <textarea
@@ -182,7 +242,7 @@ const NotionLikeWaitlist: React.FC = () => {
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-                
+
                 <div className="flex space-x-3">
                   <motion.button
                     type="button"
@@ -207,6 +267,7 @@ const NotionLikeWaitlist: React.FC = () => {
           </motion.form>
         )}
       </AnimatePresence>
+
       
       <div className="mt-8 text-center text-sm text-gray-500">
         <p>We&apos;ll never share your information with anyone else.</p>

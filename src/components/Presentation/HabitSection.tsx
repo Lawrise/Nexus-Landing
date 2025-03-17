@@ -1,7 +1,7 @@
 import { PiHourglassHighFill } from "react-icons/pi";
 import { PiTrophy } from "react-icons/pi";
 import { PiCalendarDots } from "react-icons/pi";
-import FeatureHeader from "@/components/Presentation/SectionsHeader";
+import SectionHeader from "@/components/Presentation/SectionsHeader";
 
 const BENEFICES = [
   {
@@ -24,7 +24,7 @@ const BENEFICES = [
 const HabitFeature = () => {
   return (
     <section>
-      <FeatureHeader
+      <SectionHeader
         title="Make learning a habit."
         description="Learning isn’t just about consuming content—it’s about building a habit that sticks. Nexus helps you stay consistent with smart reminders and progress tracking."
         link={{ title: "Learn more about habit building", href: "#" }}

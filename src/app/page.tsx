@@ -21,7 +21,6 @@ export default function Home() {
       <Cta />
       <Faq />
       <NotionLikeWaitlist />
-      <div className="h-[200px]">test</div>
     </>
   );
 }
