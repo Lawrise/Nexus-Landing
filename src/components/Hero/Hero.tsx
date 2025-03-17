@@ -3,10 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { LuArrowRight } from "react-icons/lu";
 import { Iphone15Pro } from "./IphoneMoc";
+import FloatingIcons from "./FloatingIcons";
 
 const Hero: React.FC = () => {
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full md:pt-24">
+    <section className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 w-full md:pt-24">
+      {/* <FloatingIcons /> */}
       <div className="flex flex-col gap-8 w-full mx-auto justify-start py-12">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold">
           Unlock your true
@@ -25,11 +27,12 @@ const Hero: React.FC = () => {
           <LuArrowRight className="ml-1 group-hover:translate-x-1 transform transition-all duration-300" />
         </Button>
       </div>
-      <div className="flex w-full justify-center rounded-md">
+      <div className="flex w-full justify-center items-center rounded-md relative">
         {/* <Lotie /> */}
-        <div className="w-auto h-[200px]">
-          <Iphone15Pro height={400}/>
+        <div className="w-full h-full absolute top-0 left-10 flex justify-start items-end bottom-0 z-10">
+          <Iphone15Pro height={200}/>
         </div>
+          <div className="bg-neutral-50 z-0  border aspect-video h-[300px] absolute top-4 right-20 rounded-md"></div>
       </div>
     </section>
   );
