@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Inter } from "next/font/google";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,9 +29,7 @@ export default function RootLayout({
         <main className="flex flex-col gap-y-24 sm:gap-y-48 row-start-2 items-center py-8 pb-32 px-8 sm:px-12 md:px-16 xl:px-[8%] 2xl:px-[15%] relative">
           {children}
         </main>
-        <footer className="flex justify-center items-center h-12 bg-gray-200">
-          <p>Footer</p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
