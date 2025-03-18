@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body className="min-h-screen flex flex-col relative">
         <Header />
-        <main className="flex flex-col gap-y-8 md:gap-y-48 row-start-2 items-center py-8 pb-32 px-8 sm:px-16 md:px-32 xl:px-64 relative">
+        <main className="flex flex-col gap-y-24 sm:gap-y-48 row-start-2 items-center py-8 pb-32 px-8 sm:px-12 md:px-16 xl:px-[8%] 2xl:px-[15%] relative">
           {children}
         </main>
         <footer className="flex justify-center items-center h-12 bg-gray-200">

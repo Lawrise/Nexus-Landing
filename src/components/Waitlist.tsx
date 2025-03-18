@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FeatureIcon } from "./Presentation/SectionsHeader";
 import { WAIT_LIST_ADVANTAGE, FormData } from "@/data/waitlist";
 
-
 const NotionLikeWaitlist: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     email: "",
@@ -65,8 +64,7 @@ const NotionLikeWaitlist: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center p-6 space-y-8 py-16 shadow-md bg-neutral-100 rounded-lg">
-      
-	  <div className="grid grid-cols-3 gap-4 w-10/20 mb-16">
+      <div className="grid-cols-3 gap-4 w-10/20 mb-16 hidden md:grid">
         {WAIT_LIST_ADVANTAGE.map((advantage, index) => (
           <FeatureIcon
             key={index}
@@ -77,7 +75,7 @@ const NotionLikeWaitlist: React.FC = () => {
           />
         ))}
       </div>
-	  <div className="text-center">
+      <div className="text-start sm:text-center w-full">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold">
           Join the waitlist
         </h1>
@@ -93,7 +91,7 @@ const NotionLikeWaitlist: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="text-center py-8"
+            className="text-start py-8"
           >
             <div className=" h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg
@@ -126,122 +124,45 @@ const NotionLikeWaitlist: React.FC = () => {
             exit={{ opacity: 0, x: step === 1 ? 20 : -20 }}
             transition={{ duration: 0.3 }}
             onSubmit={handleSubmit}
-            className="space-y-6 w-1/2"
+            className="md:space-y-6 w-full md:w-1/2"
           >
-            {step === 1 && (
-              <div className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="you@example.com"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    autoFocus
-                  />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-                  )}
-                </div>
-
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.99 }}
-                  className="w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            <div className="space-y-4">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Continue
-                </motion.button>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="you@example.com"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  autoFocus
+                />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                )}
               </div>
-            )}
 
-            {step === 2 && (
-              <div className="space-y-4">
-        <div className="grid grid-cols-3 gap-4 w-10/20">
-        {WAIT_LIST_ADVANTAGE.map((advantage, index) => (
-          <FeatureIcon
-            key={index}
-            icon={advantage.icon}
-            title={advantage.title}
-            description={advantage.description}
-            className="flex flex-col justify-center items-center text-center"
-          />
-        ))}
-      </div>        <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your full name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    autoFocus
-                  />
-                  {errors.name && (
-                    <p className="mt-1 text-sm text-red-600">{errors.name}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="reason"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Why are you interested? (optional)
-                  </label>
-                  <textarea
-                    id="reason"
-                    name="reason"
-                    value={formData.reason}
-                    onChange={handleChange}
-                    placeholder="Tell us why you're interested in our product..."
-                    rows={3}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-
-                <div className="flex space-x-3">
-                  <motion.button
-                    type="button"
-                    onClick={handleBack}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                    className="w-1/3 px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                  >
-                    Back
-                  </motion.button>
-                  <motion.button
-                    type="submit"
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                    className="w-2/3 px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                  >
-                    Join Waitlist
-                  </motion.button>
-                </div>
-              </div>
-            )}
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                Continue
+              </motion.button>
+            </div>
           </motion.form>
         )}
       </AnimatePresence>
 
-      
-      <div className="mt-8 text-center text-sm text-gray-500">
+      <div className="md:mt-8 text-center text-sm text-gray-500">
         <p>We&apos;ll never share your information with anyone else.</p>
       </div>
     </div>

@@ -17,10 +17,10 @@ export const FeatureIcon: React.FC<FeatureIconProps> = ({
   description,
   className,
 }) => (
-  <div className={cn("flex flex-col justify-center items-start gap-y-2 text-start px-4", className)}>
+  <div className={cn("flex flex-col gap-2 flex-grow", className)}>
     {icon}
     <h3 className="font-bold">{title}</h3>
-    <p className="text-neutral-500">{description}</p>
+    <p className="text-neutral-500 text-base font-semibold">{description}</p>
   </div>
 );
 
@@ -44,41 +44,39 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   link,
   items,
 }) => (
-  <header className="flex w-full mx-auto mb-8 md:mb-16 justify-between gap-x-8">
-    <div className="flex flex-col gap-4 w-4/10">
-      <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold">
+  <header className="grid grid-cols-13 w-full mb-8 items-end">
+    <div className="flex flex-col gap-4 col-start-1 col-span-full md:col-span-6 mr-8 text-start">
+      <h1 className="text-5xl sm:text-6xl w-3/4 font-bold text-start xl-text-center">
         {title}
         <br className="block sm:hidden md:block" />
       </h1>
-      <p className="text-lg md:text-xl text-neutral-500">
+      <p className="text-lg font-semibold text-neutral-500">
         {description}
         <br className="hidden md:block" />
       </p>
       {link && (
-        <Link
-          href={link.href}
-          className="flex items-center justify-start group p-0"
-        >
+        <Link href={link.href} className="flex justify-start group p-0 w-full">
           <Button
             variant="link"
-            className="text-primary px-0 mx-0 text-lg justify-start"
+            className="text-primary px-0 mx-0 text-md md:text-base  xl:text-lg justify-start"
           >
             {link.title}
-            <LuArrowRight className=" group-hover:translate-x-1 transform transition-all duration-300" />
+            <LuArrowRight className="group-hover:translate-x-1 transform transition-all duration-300" />
           </Button>
         </Link>
       )}
     </div>
-    <div className="grid grid-cols-3 gap-4 w-10/20">
+    <ul className="hidden md:grid grid-cols-3 col-start-7 col-span-7 gap-4 ">
       {items.map((item, index) => (
-        <FeatureIcon
-          key={index}
-          icon={item.icon}
-          title={item.title}
-          description={item.description}
-        />
+        <li key={index} className="flex flex-col flex-grow flex- justify-end">
+          <FeatureIcon
+            icon={item.icon}
+            title={item.title}
+            description={item.description}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   </header>
 );
 

@@ -79,10 +79,10 @@ export const FEATURES: FeatureInterface[] = [
   },
 ];
 
-export const TARGET_USERS = [
+export const ALL_ADVANTAGES = [
   {
     icon: <FaLaptopCode className="text-6xl" />,
-    title: "Self taught learner",
+    title: "Self taught",
     description: "Learn any topic by your own with our learning path feature",
   },
   {

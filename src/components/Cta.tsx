@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 const Cta: React.FC = () => {
   return (
 	<section className="flex flex-col items-center justify-center  shadow-md bg-neutral-100 w-full rounded-md py-16 hover:outline-16 hover:outline-neutral-200">
-	<div className="w-1/2 flex flex-col items-center justify-center text-center gap-4 gap-y-10">
+	<div className="md:w-1/2 flex flex-col items-center justify-center text-center gap-4 md:gap-y-10">
 	  <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold">
 		Join a Community of Learners & Stay Ahead
 	  </h2>

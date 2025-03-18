@@ -6,7 +6,7 @@ export interface BeneficesInterface {
   description: string;
 }
 
-export const BENEFICES = [
+export const HABIT_ADVANTAGES = [
   {
 	icon: <PiCalendarDots className="text-6xl" />,
 	title: " Stay on Track",
@@ -14,7 +14,7 @@ export const BENEFICES = [
   },
   {
 	icon: <PiHourglassHighFill className="text-6xl" />,
-	title: "Small Steps, Big Results ",
+	title: "See Progress",
 	description:
 	  "Learn in bite-sized sessions without burnout. ",
   },

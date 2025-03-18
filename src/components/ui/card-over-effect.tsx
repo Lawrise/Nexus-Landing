@@ -23,7 +23,7 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+        "grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3",
         className
       )}
     >
@@ -57,11 +57,11 @@ export const HoverEffect = ({
               {item.icon}
             </div>
             <CardTitle>{item.title}</CardTitle>
-            <CardDescription className="mb-8">
+            <CardDescription className="mb-8 hidden md:block">
               {item.description}
             </CardDescription>
             {item.replace && (
-              <div className="flex items-center justify-center space-x-2">
+              <div className=" items-center justify-center space-x-2 hidden md:flex">
                 <p className="font-semibold">Alternative to</p>
                 {item.withIcon &&
                   item.withIcon.map((icon, index) => (
@@ -73,7 +73,7 @@ export const HoverEffect = ({
               </div>
             )}
             {item.blend && (
-              <div className="flex items-center justify-center space-x-2">
+              <div className=" items-center justify-center space-x-2 hidden md:flex">
                 <p className="font-semibold">Blend with</p>
                 {item.withIcon &&
                   item.withIcon.map((icon, index) => (

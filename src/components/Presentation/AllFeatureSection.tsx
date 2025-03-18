@@ -1,6 +1,6 @@
 import { HoverEffect } from "@/components/ui/card-over-effect";
 import SectionHeader from "@/components/Presentation/SectionsHeader";
-import { TARGET_USERS, FEATURES } from "@/data";
+import { ALL_ADVANTAGES, FEATURES } from "@/data/allPresentation";
 
 const AllFeature: React.FC = () => {
   return (
@@ -9,10 +9,10 @@ const AllFeature: React.FC = () => {
         title="Blend all your study tools."
         description="Define what you want to learn and why it matters to you. Let us create a learning path that is tailored to you."
         link={{
-          title: "Learn more about how feature is blend together",
+          title: "More about study tools",
           href: "#",
         }}
-        items={TARGET_USERS}
+        items={ALL_ADVANTAGES}
       />
       <HoverEffect items={FEATURES} />
     </section>

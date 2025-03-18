@@ -54,6 +54,7 @@ const FAQ: React.FC = () => {
         title="FAQ"
         description="Get answers to the most common questions about Nexus."
         items={FAQ_ICON}
+        link={{ title: "More about the community", href: "#" }}
       />
       <div className="space-y-1  pb-8 pt-4 rounded-lg">
         {FAQ_QUESTIONS.map((item) => (

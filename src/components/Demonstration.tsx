@@ -56,7 +56,7 @@ const Demonstration = () => {
           className={`relative w-full rounded-lg shadow-xl overflow-hidden transition-colors duration-500 border border-double ${activeTabData.borderColor} aspect-video`} // Using aspect-video class for 16:9 aspect ratio
         >
           <div className="absolute inset-0 flex justify-center items-center">
-            <p className="text-xl font-medium">{activeTabData.content}</p>
+            <p className="text-base font-semibold">{activeTabData.content}</p>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@ const Demonstration = () => {
 
       {/* Detailed Content Section */}
       <div className="w-full flex flex-col justify-center items-center">
-        <p className="text-center text-xl w-full sm:w-1/2 lg:w-1/3">{activeTabData.detail}</p>
+        <p className="text-center text-lg text-neutral-500 font-semibold hidden sm:block px-40">{activeTabData.detail}</p>
         <Button
           variant="link"
           className="group hover:-translate-y-1 transform transition-all w-56 duration-300 font-bold py-1 mt-4"
