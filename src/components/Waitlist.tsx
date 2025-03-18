@@ -58,10 +58,6 @@ const NotionLikeWaitlist: React.FC = () => {
     }
   };
 
-  const handleBack = () => {
-    setStep(1);
-  };
-
   return (
     <div className="w-full flex flex-col items-center justify-center p-6 space-y-8 py-16 shadow-md bg-neutral-100 rounded-lg">
       <div className="grid-cols-3 gap-4 w-10/20 mb-16 hidden md:grid">
