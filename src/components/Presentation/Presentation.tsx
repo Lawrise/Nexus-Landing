@@ -1,10 +1,9 @@
-import SectionHeader from "@/components/Presentation/SectionsHeader";
+import SectionHeader from "@/components/Presentation/HeaderPres";
 import { SmallSectionAdvantage } from "./SmallSectionAdvantage";
 import { BeneficesInterface } from "@/data";
 
 export interface BeneficesProps {
   title: string;
-  description: string;
   link: {
     title: string;
     href: string;
@@ -14,19 +13,17 @@ export interface BeneficesProps {
 
 const Presentation: React.FC<BeneficesProps> = ({
   title,
-  description,
   link,
   benefices,
 }) => {
   return (
-    <section>
+    <section className="px-8 sm:px-12 md:px-16 xl:px-[8%] 2xl:px-[15%] py-20 bg-neutral-50 w-full">
       <SectionHeader
         title={title}
-        description={description}
         link={link}
         items={benefices}
       />
-      <div className="w-full aspect-video border border-neutral-400 rounded-md"></div>
+      <div className="w-full aspect-video border border-neutral-400 rounded-4xl"></div>
       <ul className="grid grid-cols-1 gap-y-8 mt-8 md:hidden">
         {benefices.map((item, index) => (
           <li key={index} className="flex flex-col items-start">

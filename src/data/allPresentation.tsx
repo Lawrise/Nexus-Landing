@@ -15,6 +15,8 @@ import { FaLaptopCode } from "react-icons/fa";
 import { PiChalkboardTeacherFill } from "react-icons/pi";
 
 export interface FeatureInterface {
+  id: number;
+  className?: string;
   title: string;
   description: string;
   link: string;
@@ -26,54 +28,63 @@ export interface FeatureInterface {
 
 export const FEATURES: FeatureInterface[] = [
   {
+    id: 1,
+    className: "md:col-span-2",
     title: "Note taking",
     description:
-      "A note-taking app that helps you organize your notes and ideas.",
+      "",
     link: "https://stripe.com",
-    icon: <LuFilePen className="text-red-500" />,
+    icon: <LuFilePen  />,
     replace: ["Notion", "Evernote"],
     withIcon: [<RiNotionFill key={1} />, <RiEvernoteLine key={2} />],
   },
   {
+    id: 2,
     title: "Graph view",
     description:
-      "A graph visualization tool that helps you understand complex relationships.",
+      "Simple to complex link between anythings",
     link: "https://netflix.com",
-    icon: <LuGitFork className="text-blue-500" />,
+    icon: <LuGitFork />,
     replace: ["Obsidian", "Roam Research"],
     withIcon: [<SiObsidian key={1} />],
   },
   {
-    title: "Learning path",
-    description:
-      "A learning path that helps you learn new skills and advance your career.",
-    link: "https://google.com",
-    icon: <LuListChecks className="text-green-500" />,
-  },
-  {
+    id: 3,
     title: "Calendar",
     description:
-      "A calendar app that helps you manage your schedule and stay organized.",
+    "Make learning a dayly habit.",
     link: "https://meta.com",
-    icon: <LuCalendarDays className="text-yellow-500" />,
+    icon: <LuCalendarDays />,
     blend: ["Google Calendar"],
     withIcon: [<SiGooglecalendar key={1} />],
   },
   {
+    id: 4,
+    title: "Learning path",
+    className: "md:col-span-2",
+    description:
+      "Don't be lost in your learning journey",
+    link: "https://google.com",
+    icon: <LuListChecks />,
+    replace: ["Passive consumption"],
+  },
+  {
+    id: 5,
     title: "Flashcards",
     description:
-      "A flashcard app that helps you memorize information and study more effectively.",
+      "Once encoded, never forget it.",
     link: "https://amazon.com",
-    icon: <TbCards className="text-fuchsia-500" />,
+    icon: <TbCards />,
     replace: ["Anki"],
     withIcon: [<SiAnki key={1} />],
   },
   {
+    id: 6,
     title: "LLS integration",
     description:
-      "An integration that connects your learning tools and helps you stay on track.",
+      "Connect to your favorite learning platform",
     link: "https://microsoft.com",
-    icon: <PiStudent className="text-orange-500" />,
+    icon: <PiStudent />,
     blend: ["Coursera", "Udemy"],
     withIcon: [<SiCoursera key={1} />, <SiUdemy key={2} />],
   },

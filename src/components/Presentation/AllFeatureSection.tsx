@@ -1,20 +1,24 @@
-import { HoverEffect } from "@/components/ui/card-over-effect";
-import SectionHeader from "@/components/Presentation/SectionsHeader";
+import SectionHeader from "@/components/Presentation/HeaderPres";
 import { ALL_ADVANTAGES, FEATURES } from "@/data/allPresentation";
+import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 
 const AllFeature: React.FC = () => {
   return (
-    <section className="">
+    <section className="px-8 sm:px-12 md:px-16 xl:px-[8%] 2xl:px-[15%] mb-40">
       <SectionHeader
         title="Blend all your study tools."
-        description="Define what you want to learn and why it matters to you. Let us create a learning path that is tailored to you."
         link={{
           title: "More about study tools",
           href: "#",
         }}
+        description="All the tools you need to study in one place"
         items={ALL_ADVANTAGES}
       />
-      <HoverEffect items={FEATURES} />
+      <BentoGrid>
+        {FEATURES.map((item, index) => (
+          <BentoGridItem key={index} {...item} />
+        ))}
+      </BentoGrid>
     </section>
   );
 };

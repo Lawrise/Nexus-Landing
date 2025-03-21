@@ -28,10 +28,9 @@ const MenuItem: React.FC<MenuItemProps> = ({
     return (
       <Link href={link || "#"}>
         <Button
-          variant="ghost"
-          className="h-8 px-3 py-2 text-sm font-normal hover:bg-gray-100 rounded-md"
+          variant="nav"
         >
-          <span className="text-gray-800">{title}</span>
+          <span className="text-header-text">{title}</span>
         </Button>
       </Link>
     );
@@ -55,16 +54,16 @@ const MenuItem: React.FC<MenuItemProps> = ({
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant="ghost"
-          className="h-8 px-3 py-2 text-sm font-normal hover:bg-gray-100 rounded-md"
+          variant="nav"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClick={() => setIsOpen(true)}
         >
-          <span className="text-gray-800">{title}</span>
+          <span className="text-header-text">{title}</span>
           {isOpen ? (
-            <ChevronUp className="h-4 w-4 ml-1 text-gray-500" />
+            <ChevronUp className="h-4 w-4 ml-1" />
           ) : (
-            <ChevronDown className="h-4 w-4 ml-1 text-gray-500" />
+            <ChevronDown className="h-4 w-4 ml-1" />
           )}
         </Button>
       </PopoverTrigger>

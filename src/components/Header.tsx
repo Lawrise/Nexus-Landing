@@ -1,5 +1,5 @@
 "use client";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { ProductSubmenu, CommunitySubmenu } from "@/data";
 import dynamic from "next/dynamic";
@@ -32,16 +32,16 @@ const navItems = [
 const Header: React.FC = () => {
   return (
     <>
-      <div className="flex justify-center items-center bg-primary/90 text-black">
-        <Link href="/" className="text-white text-lg font-bold p-0">
+      {/* <div className="flex justify-center items-center bg-primary/90 text-black">
+        <Link href="/" className="text-header-text text-lg font-bold p-0">
           <Button variant="link" className="text-black p-0">
             🚧 Still in construction, join or community to get updates !
           </Button>
         </Link>
-      </div>
-      <div className="flex border-b z-50 sticky top-0 border-gray-200 h-12 items-center justify-between px-4 text-md bg-white w-full">
+      </div> */}
+      <div className="flex z-50 sticky top-0 h-16 items-center justify-between px-4 text-md text-black w-full bg-white ">
         <div className="flex gap-4 items-center">
-          <Link href="/" className="flex gap-2 items-center">
+          <Link href="/" className="flex gap-2 items-center ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -101,6 +101,7 @@ const Header: React.FC = () => {
                   key={item.label}
                   title={item.label}
                   submenu={item.submenu}
+                  
                 />
               );
             })}

@@ -1,25 +1,25 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
-        default:
-          "bg-neutral-900 text-white shadow-xs hover:bg-neutral-800" ,
+        default: "bg-neutral-900 text-white shadow-xs hover:bg-neutral-800",
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
-        outline:
-          "border border-neutral-200 bg-neutral-100 outline-none",
+        outline: "border border-neutral-200 bg-white outline-none",
         secondary:
           "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
         ghost: "hover:bg-neutral-100 hover:text-accent-foreground",
         link: "underline-offset-4 hover:underline",
-        cta: "bg-primary text-white font-semibold shadow-lg hover:shadow-xl hover:from-teal-400 hover:to-teal-500 px-6 py-3 text-base rounded-lg",
+        cta: "bg-primary text-white font-semibold shadow-lg hover:shadow-xl hover:from-blue-400 hover:to-blue-500 px-6 py-3 text-base rounded-lg",
+        nav: "h-8 px-3 py-2 text-sm font-normal hover:bg-none rounded-md",
+        header: "bg-white text-blue-500 shadow-xs hover:bg-gray-50",
       },
       size: {
         default: "h-9 px-4 py-2 ",
@@ -33,7 +33,7 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 function Button({
   className,
@@ -43,9 +43,9 @@ function Button({
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
+    asChild?: boolean;
   }) {
-  const Comp = asChild ? Slot : "button"
+  const Comp = asChild ? Slot : "button";
 
   return (
     <Comp
@@ -53,7 +53,7 @@ function Button({
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
-  )
+  );
 }
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };

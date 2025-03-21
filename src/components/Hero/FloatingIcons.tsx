@@ -3,7 +3,7 @@ const FloatingIcons = () => {
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
       {/* Laptop icon */}
-      <div className="absolute top-[10%] left-[15%] bg-blue-100 p-3 rounded-md border-l-4 border-blue-400">
+      <div className="absolute top-[10%] left-[15%] bg-blue-100 p-3 rounded-md border-l-4 border-blue-400 hover:animate-spin">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
@@ -97,7 +97,7 @@ const FloatingIcons = () => {
       </div>
 
       {/* Bicycle icon */}
-      <div className="absolute bottom-[0%] right-[5%] bg-teal-100 p-3 rounded-md border-l-4 border-teal-400">
+      <div className="absolute bottom-[0%] right-[5%] bg-blue-100 p-3 rounded-md border-l-4 border-blue-400">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
@@ -108,7 +108,7 @@ const FloatingIcons = () => {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-teal-500"
+          className="text-blue-500"
         >
           <circle cx="5.5" cy="17.5" r="3.5"></circle>
           <circle cx="18.5" cy="17.5" r="3.5"></circle>

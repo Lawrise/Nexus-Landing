@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SectionHeader from "./Presentation/SectionsHeader";
+import SectionHeader from "./Presentation/HeaderPres";
 import { FAQ_ICON, FAQ_QUESTIONS, FAQQuestionInterface } from "@/data";
 
 // FAQ Item component
@@ -49,10 +49,10 @@ const FAQItem: React.FC<{ item: FAQQuestionInterface }> = ({ item }) => {
 // Main FAQ component
 const FAQ: React.FC = () => {
   return (
-    <div className=" w-full  bg-white ">
+    <div className="px-8 sm:px-12 md:px-16 xl:px-[8%] 2xl:px-[15%] w-full py-20">
       <SectionHeader
         title="FAQ"
-        description="Get answers to the most common questions about Nexus."
+        description="Frequently asked questions"
         items={FAQ_ICON}
         link={{ title: "More about the community", href: "#" }}
       />

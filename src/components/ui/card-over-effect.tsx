@@ -23,7 +23,7 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3",
+        "grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4",
         className
       )}
     >
@@ -38,7 +38,7 @@ export const HoverEffect = ({
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
+                className="absolute inset-0 h-full w-full bg-blue-50 dark:bg-slate-800/[0.8] block  rounded-4xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 1 }}
                 animate={{
@@ -53,33 +53,38 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card>
-            <div className="w-full flex justify-center items-center text-4xl">
+            <div className="w-full flex justify-start items-center text-4xl">
               {item.icon}
             </div>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription className="mb-8 hidden md:block">
-              {item.description}
-            </CardDescription>
+            <div>
+              <CardTitle>{item.title}</CardTitle>
+              <CardDescription className="hidden md:block">
+                {item.description}
+              </CardDescription>
+            </div>
             {item.replace && (
-              <div className=" items-center justify-center space-x-2 hidden md:flex">
-                <p className="font-semibold">Alternative to</p>
+              <div className=" items-start justify-start space-x-2 hidden md:flex flex-col">
+                <p className="font-semibold">Like</p>
+                <div className="flex items-start space-x-1">
+
                 {item.withIcon &&
                   item.withIcon.map((icon, index) => (
                     <span key={index} className="flex items-center space-x-1">
                       {icon}
-                      <span>{item.replace ? item.replace[index] : ''}</span>
+                      <span>{item.replace ? item.replace[index] : ""}</span>
                     </span>
                   ))}
+                </div>
               </div>
             )}
             {item.blend && (
-              <div className=" items-center justify-center space-x-2 hidden md:flex">
-                <p className="font-semibold">Blend with</p>
+              <div className=" items-start justify-start space-x-2 hidden md:flex flex-col">
+                <p className="font-semibold">Linked to</p>
                 {item.withIcon &&
                   item.withIcon.map((icon, index) => (
-                    <span key={index} className="flex items-center space-x-1">
+                    <span key={index} className="flex items-start space-x-1">
                       {icon}
-                      <span>{item.blend ? item.blend[index] : ''}</span>
+                      <span>{item.blend ? item.blend[index] : ""}</span>
                     </span>
                   ))}
               </div>
@@ -101,13 +106,11 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 flex justify-center bg-neutral-100 items-center text-center overflow-hidden   dark:border-white/[0.2]  relative z-20",
+        "rounded-4xl h-60 w-full p-8 flex flex-col justify-around bg-white text-start overflow-hidden  dark:border-white/[0.2]  relative z-20",
         className
       )}
     >
-      <div className="relative z-50">
-        <div className="p-4">{children}</div>
-      </div>
+      {children}
     </div>
   );
 };
@@ -120,9 +123,7 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn(" font-bold tracking-wide mt-4", className)}>
-      {children}
-    </h4>
+    <h4 className={cn("text-lg mb-2 font-bold tracking-wide", className)}>{children}</h4>
   );
 };
 
@@ -134,7 +135,7 @@ export const CardDescription = ({
   children: React.ReactNode;
 }) => {
   return (
-    <p className={cn("mt-8  tracking-wide leading-relaxed text-md", className)}>
+    <p className={cn("tracking-wide leading-relaxed text-base text-neutral-500", className)}>
       {children}
     </p>
   );

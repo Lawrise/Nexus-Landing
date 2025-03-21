@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Demonstration from "@/components/Demonstration";
 import Hero from "@/components/Hero/Hero";
 import Cta from "@/components/Cta";
 import Faq from "@/components/Faq";
@@ -14,11 +13,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Demonstration />
       <AllFeature />
-      {PRESENTATIONS.map((presentation, index) => (
-        <Presentation key={index} {...presentation} />
-      ))}
+      <div className="py-20 bg-neutral-50 rounded-4xl">
+        {PRESENTATIONS.map((presentation, index) => (
+          <Presentation key={index} {...presentation} />
+        ))}
+      </div>
       <Cta />
       <Faq />
       <NotionLikeWaitlist />
