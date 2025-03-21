@@ -1,3 +1,5 @@
+import { IconType } from "react-icons";
+
 const IconBubble = ({
   position,
   icon: Icon,
@@ -5,7 +7,7 @@ const IconBubble = ({
   rotateClass = "",
 }: {
   position: string;
-  icon: any;
+  icon: IconType;
   color: string;
   rotateClass?: string;
 }) => (
