@@ -71,6 +71,7 @@ export const FEATURES: FeatureInterface[] = [
   {
     id: 5,
     title: "Flashcards",
+    className: "md:col-span-2",
     description:
       "Once encoded, never forget it.",
     link: "https://amazon.com",

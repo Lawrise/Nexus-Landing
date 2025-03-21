@@ -1,20 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { LuArrowRight } from "react-icons/lu";
-import {
-  BsLightbulb,
-  BsBook,
-  BsCalendar,
-  BsPencil,
-  BsLaptop,
-  BsChatDots,
-} from "react-icons/bs";
+import { BsBook, BsCalendar, BsPencil, BsLaptop } from "react-icons/bs";
 import { FaBrain } from "react-icons/fa6";
 import { MdOutlineQuiz } from "react-icons/md";
 import Demonstration from "./Demonstration";
 import { useEffect, useState } from "react";
 import IconBubble from "@/components/IconBubble";
-import GraphAnimation from "./test";
 
 const Hero: React.FC = () => {
   const [showIcons, setShowIcons] = useState(false);

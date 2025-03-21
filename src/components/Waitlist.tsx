@@ -7,7 +7,7 @@ const NotionLikeWaitlist: React.FC = () => {
  
   return (
     <section className="py-20 px-8 sm:px-12 md:px-16 xl:px-[8%] 2xl:px-[15%] w-full ">
-      <div className="flex flex-col bg-white items-center justify-center text-center gap-4 md:gap-y-10 w-full shadow-md py-16 rounded-4xl">
+      <div className="flex flex-col bg-white items-center justify-center text-center gap-4 md:gap-y-10 w-full shadow-md py-16 rounded-4xl px-[25%]">
         <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold w-2xl">
           Join the waitlist
         </h2>
@@ -17,7 +17,7 @@ const NotionLikeWaitlist: React.FC = () => {
         <Input
           type="email"
           placeholder="Enter your email"
-          className="w-80"
+          className="w-full"
         />
         <Button
           variant="cta"

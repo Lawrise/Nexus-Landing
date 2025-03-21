@@ -26,7 +26,7 @@ export const FeatureIcon: React.FC<FeatureIconProps> = ({
 
 interface SectionHeaderProps {
   title: string;
-  description: string;
+  description?: string;
   link?: {
     title: string;
     href: string;

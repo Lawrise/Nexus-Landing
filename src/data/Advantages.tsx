@@ -11,6 +11,7 @@ import {
   PiHandshake,
   PiCheckSquare,
   PiBrain,
+  PiMagnifyingGlass,
 } from "react-icons/pi";
 import { PiGraph } from "react-icons/pi";
 
@@ -87,14 +88,14 @@ export const VISUAL_ADVANTAGES = [
   },
   {
     icon: <PiChartBar className="text-6xl" />,
-    title: "See your progress over time",
-    description: "Nexus helps you see your progress and growth over time.",
+    title: " Boost Memory",
+    description: "Map knowledge to organize, retain, and recall information better.",
   },
   {
-
-    title: "Understand your learning patterns",
+    icon: <PiMagnifyingGlass className="text-6xl" />,
+    title: "Explore and discover",
     description:
-      "Nexus helps you understand your learning patterns and habits.",
+      "Explore hidden patterns and dive deeper into related topics effortlessly.",
   },
 ];
 

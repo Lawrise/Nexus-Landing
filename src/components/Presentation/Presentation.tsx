@@ -23,7 +23,7 @@ const Presentation: React.FC<BeneficesProps> = ({
         link={link}
         items={benefices}
       />
-      <div className="w-full aspect-video border border-neutral-400 rounded-4xl"></div>
+      <div className="w-full aspect-video border border-white rounded-4xl bg-white"></div>
       <ul className="grid grid-cols-1 gap-y-8 mt-8 md:hidden">
         {benefices.map((item, index) => (
           <li key={index} className="flex flex-col items-start">
